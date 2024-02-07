@@ -1,0 +1,13 @@
+﻿@model List<Category>
+@{
+    ViewBag.Title = "Şaka";
+}
+
+<ul class="list-unstyled mb-0">
+    @foreach (var c in Model)
+    {
+        <li><a asp-controller="Home" asp-action="Index" asp-route-cid="@c.Id">@c.Name</a></li>
+
+    }
+</ul>
+
