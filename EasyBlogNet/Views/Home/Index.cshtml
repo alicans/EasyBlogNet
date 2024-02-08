@@ -3,15 +3,21 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if(ViewBag.CategoryName != null)
+{
+    <h2 class="border-bottom pb-3 mb-4">Posts in the &ldquo;@ViewBag.CategoryName&rdquo; category</h2>
+   
+}
+
 @foreach (var post in Model)
 {
     <div class="card mb-4">
-        <a href="#!"><img class="card-img-top post-image" src="~/img/posts/@post.Image" alt="@post.Title" /></a>
+        <a asp-action="ShowPost" asp-route-id="@post.Id"><img class="card-img-top post-image" src="~/img/posts/@post.Image" alt="@post.Title" /></a>
         <div class="card-body">
             @* <div class="small text-muted">January 1, 2023</div> *@
             <h2 class="card-title">@post.Title</h2>
             <p class="card-text">@post.Description</p>
-            <a class="btn btn-primary" href="#!">Read more →</a>
+            <a class="btn btn-primary" asp-action="ShowPost" asp-route-id="@post.Id">Read more →</a>
         </div>
     </div>
 }
